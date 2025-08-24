@@ -14,5 +14,12 @@ def catalog(request):
     return render(request, "goods/catalog.html", context)
 
 
-def ptoduct(request):
-    return render(request, "goods/product.html")
+def ptoduct(request, product_slug):
+
+    product = Products.objects.get(slug=product_slug)
+
+    context = {
+        'product': product
+    }
+
+    return render(request, "goods/product.html", context=context)
